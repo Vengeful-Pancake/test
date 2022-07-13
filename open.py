@@ -12,10 +12,11 @@ scr_h = root.winfo_screenheight()
 
 transparency = (255, 0, 128)  # Transparency color
 
-
 pygame.init()
 
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN) # For borderless, use pygame.NOFRAME
+tolx = scr_w/2
+toly = scr_h/4
 
 hwnd = pygame.display.get_wm_info()["window"]
 win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE, win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE) | win32con.WS_EX_LAYERED)
@@ -46,4 +47,5 @@ while run:
                     time.sleep(0.1)
                     check = 1
 
+    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(scr_w-tolx, scr_h-toly, tolx, toly ))
     pygame.display.update()

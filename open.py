@@ -23,6 +23,10 @@ win32gui.SetLayeredWindowAttributes(hwnd, win32api.RGB(*transparency), 0, win32c
 
 fullscreen = True
 run = 1
+
+def text():
+    return
+
 while run:
     tolx = scr_w/2
     toly = scr_h/4
@@ -48,5 +52,5 @@ while run:
                     time.sleep(0.1)
                     check = 1
 
-    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(scr_w-tolx, scr_h-toly, tolx, toly ))
+    pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(scr_w-tolx, scr_h-toly, tolx, toly),1)
     pygame.display.update()

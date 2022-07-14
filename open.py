@@ -3,6 +3,8 @@ import win32api
 import win32con
 import win32gui
 import time
+import pyttsx3
+import speech_recognition
 from pygame.locals import *
 from tkinter import *
 
@@ -15,7 +17,8 @@ transparency = (255, 0, 128)  # Transparency color
 pygame.init()
 
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN) # For borderless, use pygame.NOFRAME
-
+pygame.display.set_caption("Vice")
+font = pygame.font.SysFont("Coder's Crux", 40)
 
 hwnd = pygame.display.get_wm_info()["window"]
 win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE, win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE) | win32con.WS_EX_LAYERED)

@@ -15,8 +15,7 @@ transparency = (255, 0, 128)  # Transparency color
 pygame.init()
 
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN) # For borderless, use pygame.NOFRAME
-tolx = scr_w/2
-toly = scr_h/4
+
 
 hwnd = pygame.display.get_wm_info()["window"]
 win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE, win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE) | win32con.WS_EX_LAYERED)
@@ -25,6 +24,8 @@ win32gui.SetLayeredWindowAttributes(hwnd, win32api.RGB(*transparency), 0, win32c
 fullscreen = True
 run = 1
 while run:
+    tolx = scr_w/2
+    toly = scr_h/4
     check = 0
     screen.fill(transparency)
     for event in pygame.event.get():

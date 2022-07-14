@@ -28,6 +28,11 @@ fullscreen = True
 run = 1
 
 def text():
+    global scr_h, scr_w, font, screen
+    text = font.render('GeeksForGeeks', True, (100,100,100), (0,10,255))
+    textRect = text.get_rect()
+    textRect.center = (scr_w // 2, scr_h // 2)
+    screen.blit(text, textRect)
     return
 
 while run:
@@ -54,6 +59,6 @@ while run:
                     fullscreen = True
                     time.sleep(0.1)
                     check = 1
-
+    text()
     pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(scr_w-tolx, scr_h-toly, tolx, toly),1)
     pygame.display.update()

@@ -29,7 +29,7 @@ run = 1
 
 def text():
     global scr_h, scr_w, font, screen
-    text = font.render('GeeksForGeeks', True, (0,0,0), (100,10,255))
+    text = font.render(texter, True, (0,0,0), (100,10,255))
     textRect = text.get_rect()
     textRect.center = (scr_w // 2, scr_h // 2)
     screen.blit(text, textRect)

@@ -47,7 +47,7 @@ def img(x,y,z):
         h = height * o
         img_resize = pygame.transform.scale(img, (w, h))
     textRect = img_resize.get_rect()
-    textRect.center = (scr_w-w, scr_h-h)
+    textRect.center = (scr_w-w/2-w/16, scr_h-h/2-h/7.5)
     screen.blit(img_resize,textRect)
     return
     

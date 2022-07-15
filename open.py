@@ -17,8 +17,8 @@ transparency = (255, 0, 128)  # Transparency color
 pygame.init()
 
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN) # For borderless, use pygame.NOFRAME
-pygame.display.set_caption("Vice")
-font = pygame.font.SysFont("Coder's Crux", 40)
+pygame.display.set_caption("Z-Wings")
+font = pygame.font.Font("font\coders_crux.ttf", 40)
 
 hwnd = pygame.display.get_wm_info()["window"]
 win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE, win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE) | win32con.WS_EX_LAYERED)
@@ -29,7 +29,7 @@ run = 1
 
 def text():
     global scr_h, scr_w, font, screen
-    text = font.render('GeeksForGeeks', True, (100,100,100), (0,10,255))
+    text = font.render('GeeksForGeeks', True, (0,0,0), (100,10,255))
     textRect = text.get_rect()
     textRect.center = (scr_w // 2, scr_h // 2)
     screen.blit(text, textRect)

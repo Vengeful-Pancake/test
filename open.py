@@ -18,11 +18,11 @@ root = Tk()
 scr_w = root.winfo_screenwidth()
 scr_h = root.winfo_screenheight()
 
-transparency = (255, 0, 128)  # Transparency color
-
 pygame.init()
 
 screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN) # For borderless, use pygame.NOFRAME
+clock = pygame.time.Clock()
+transparency = (255, 0, 128)  # Transparency color
 pygame.display.set_caption("Z-Wings")
 font = pygame.font.Font("font\coders_crux.ttf", 40)
 fullscreen = True
@@ -31,10 +31,6 @@ run = 1
 hwnd = pygame.display.get_wm_info()["window"]
 win32gui.SetWindowLong(hwnd, win32con.GWL_EXSTYLE, win32gui.GetWindowLong(hwnd, win32con.GWL_EXSTYLE) | win32con.WS_EX_LAYERED)
 win32gui.SetLayeredWindowAttributes(hwnd, win32api.RGB(*transparency), 0, win32con.LWA_COLORKEY)
-
-
-
-
 
 def img(x,y,z):
     global scr_w, scr_h
@@ -50,7 +46,10 @@ def img(x,y,z):
         w = width * o
         h = height * o
         img_resize = pygame.transform.scale(img, (w, h))
-    return w, h, img_resize
+    textRect = img.get_rect()
+    textRect.center = (scr_w, scr_h)
+    screen.blit(img_resize,textRect)
+    return
     
 
 def text(texter):
@@ -66,6 +65,7 @@ while run:
     toly = scr_h/4
     check = 0
     screen.fill(transparency)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = 0
@@ -85,8 +85,9 @@ while run:
                     fullscreen = True
                     time.sleep(0.1)
                     check = 1
+    
     text("rep")
-    w, h, img_resize = img(tolx, toly, 'img/sprite.png')
-    screen.blit(img_resize,scr_w - w, scr_h - h)
+    img(tolx, toly, 'img/sprite.png')
     pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(scr_w-tolx, scr_h-toly, tolx, toly),1)
     pygame.display.update()
+    clock.tick(60)

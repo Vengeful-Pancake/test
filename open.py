@@ -10,7 +10,6 @@ import cv2
 
 from pygame.locals import *
 from tkinter import *
-import cv2
  
 
 
